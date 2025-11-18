@@ -1,14 +1,6 @@
 first = 5
-
-# while 문장 구조
-#     while condition : 
-#     executable_statements
-
-while first > 0 :
-    print("while 값 : ",+first)
-    if first == 3 :
-        print("break 실행")
-        break
-    first = first - 1
-
-print("while 종료")
+while first > 0 : 
+    if first == 2:
+        print("special")
+    print(f"현재 숫자: {first}")
+    first = first-1

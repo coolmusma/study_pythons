@@ -1,7 +1,5 @@
-second = "programming"
+first = "Python is fun"
+second = "Python"
 
-first = "welcome to python strings" + second
-
-third = "welcome to python strings {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            second}"
-print(first)
-frist = 5   # 오타
+if second in first:
+    print(f"Welcome! {first}")
