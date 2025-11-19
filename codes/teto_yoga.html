@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teto Yoga - 김찬호</title>
+    <style>
+        :root {
+            --primary-color: #36454F; /* Deep Charcoal */
+            --secondary-color: #F5F5F5; /* Off-White/Light Gray */
+            --accent-color: #E2725B; /* Terracotta */
+            --accent-color-dark: #8B4513; /* Deep Olive Green could be another option */
+            --text-color: #333;
+            --light-text-color: #FFF;
+            --border-color: #DDD;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&family=Poppins:wght@700&display=swap');
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: rgba(54, 69, 79, 0.85); /* Semi-transparent Deep Charcoal */
+            backdrop-filter: blur(10px);
+            color: var(--light-text-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .brand-name {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .nav-menu {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-menu li {
+            margin-left: 25px;
+        }
+
+        .nav-menu a {
+            color: var(--light-text-color);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover, .nav-menu a.active {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Section */
+        #hero {
+            height: 70vh;
+            background-image: url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?q=80&w=2120&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+        
+        #hero .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 40px 60px;
+            border-radius: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.7);
+        }
+
+        #hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 3.5rem;
+            margin: 0 0 10px 0;
+        }
+        
+        #hero p {
+            font-size: 1.5rem;
+            margin: 0;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+
+
+        /* General Section Styling */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 50px;
+            color: var(--primary-color);
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Profile Section */
+        .profile-intro {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        .profile-image {
+            flex-shrink: 0;
+        }
+        .profile-image img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--accent-color);
+        }
+        .profile-text h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+        .profile-text .specialist {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            font-weight: 700;
+        }
+        .profile-text .philosophy {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-top: 20px;
+        }
+
+        /* Timeline Fix */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--accent-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .timeline-item {
+            padding: 10px 50px; /* Increased horizontal padding */
+            position: relative;
+            width: 50%;
+        }
+        .timeline-item.left {
+            left: 0;
+            text-align: right;
+        }
+        .timeline-item.right {
+            left: 50%;
+        }
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            right: -9px;
+            background-color: white;
+            border: 4px solid var(--accent-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-item.right::after {
+            left: -9px;
+        }
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .timeline-content h3 {
+            margin: 0 0 5px 0;
+            color: var(--primary-color);
+        }
+
+        .practice-styles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .style-card {
+            flex: 1;
+            text-align: center;
+            overflow: hidden;
+            padding: 0;
+            margin: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .style-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        .style-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .style-card-content {
+            padding: 25px 20px;
+        }
+        .style-card h3 {
+            color: var(--accent-color);
+            margin-top: 0;
+        }
+
+        /* One-day Class Section */
+        #one-day-class {
+            background-color: #fff;
+        }
+        .booking-container {
+            display: flex;
+            gap: 30px;
+        }
+        .calendar-view {
+            flex: 2;
+        }
+        .booking-form {
+            flex: 1;
+        }
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .calendar-header, .calendar-day {
+            text-align: center;
+            padding: 10px;
+        }
+        .calendar-header {
+            font-weight: bold;
+        }
+        .calendar-day {
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .calendar-day.has-class {
+            background-color: #ffebcd;
+            font-weight: bold;
+        }
+        .calendar-day:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        .cta-button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        .cta-button:hover {
+            background-color: var(--accent-color-dark);
+        }
+
+        /* Sections with BG Images */
+        .section-with-bg {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .section-with-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 30, 30, 0.7);
+            z-index: 1;
+        }
+        .section-with-bg .container {
+            position: relative;
+            z-index: 2;
+        }
+        .section-with-bg .section-title {
+             color: white;
+        }
+        #review {
+            background-image: url('https://images.unsplash.com/photo-1575052814086-c71a07425a48?q=80&w=2070&auto=format&fit=crop');
+        }
+        #qna {
+            background-image: url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1934&auto=format&fit=crop');
+        }
+        #notice {
+            background-image: url('https://images.unsplash.com/photo-1517842645767-c6f90415aaa7?q=80&w=2070&auto=format&fit=crop');
+        }
+
+
+        /* Review Section */
+        .review-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .review-card {
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 20px;
+        }
+        .star-rating {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+        .review-card p {
+            font-style: italic;
+        }
+        .review-card .reviewer {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        .reviewer img {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+            object-fit: cover;
+        }
+
+        /* Q&A Section */
+        .qna-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 15px 0;
+        }
+        .qna-item:last-child {
+            border-bottom: none;
+        }
+        .question {
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .question span {
+            margin-right: 10px;
+        }
+        .question .icon {
+            color: var(--accent-color);
+            display: inline-block;
+            width: 20px;
+        }
+        .answer {
+            background-color: #fffaf0;
+            padding: 20px;
+            margin-top: 10px;
+            border-left: 4px solid var(--accent-color);
+            border-radius: 4px;
+        }
+
+        /* Notice Section */
+        .notice-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .notice-list .date {
+            color: #888;
+            margin-right: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="#" class="brand-name">Teto Yoga</a>
+            <ul class="nav-menu">
+                <li><a href="#profile">Profile</a></li>
+                <li><a href="#one-day-class">One-day Class</a></li>
+                <li><a href="#review">Review</a></li>
+                <li><a href="#qna">Q&A</a></li>
+                <li><a href="#notice">Notice</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Teto Yoga</h1>
+                <p>Flow & Stillness</p>
+            </div>
+        </section>
+
+        <section id="profile">
+            <div class="container">
+                <div class="profile-intro card">
+                    <div class="profile-image">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1964&auto=format&fit=crop" alt="김찬호 프로필 사진">
+                    </div>
+                    <div class="profile-text">
+                        <h1>김찬호 (Kim Chanho)</h1>
+                        <p class="specialist">12년차 요가 지도자 (Men's Yoga Specialist)</p>
+                        <p class="philosophy">
+                            "고난이도보다 안전과 단계적 발전을 중시하며, 요가수트라 기반의 지도 철학과 공감각적 지도로 미해결 감정과 고착된 패턴의 자각을 유도합니다."
+                        </p>
+                    </div>
+                </div>
+                
+                <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-bottom: 30px;">Practice Styles</h2>
+                <div class="practice-styles">
+                    <div class="card style-card">
+                        <img src="https://images.unsplash.com/photo-1528716321680-815a8cdb8cbe?q=80&w=1974&auto=format&fit=crop" alt="명상 요가">
+                        <div class="style-card-content">
+                            <h3>휴식-명상</h3>
+                            <p>신경계 이완 및 내면 관찰</p>
+                        </div>
+                    </div>
+                    <div class="card style-card">
+                        <img src="https://images.unsplash.com/photo-1591291621164-2c6367723315?q=80&w=1887&auto=format&fit=crop" alt="움직임 요가">
+                        <div class="style-card-content">
+                            <h3>스트레칭-운동</h3>
+                            <p>체형교정, 근력 향상, 아사나 심화</p>
+                        </div>
+                    </div>
+                    <div class="card style-card">
+                        <img src="https://images.unsplash.com/photo-1516979187457-637abb4f9353?q=80&w=2070&auto=format&fit=crop" alt="요가 공부">
+                        <div class="style-card-content">
+                            <h3>공부-연구</h3>
+                            <p>요가 경전, 해부학 기반의 원리 이해</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="section-title" style="text-align: left; font-size: 2rem; margin-top: 80px; margin-bottom: 50px;">Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>2012-2015</h3>
+                            <p>지도자 2급, 비니/시바난다/체형교정 교육 이수, 검찰청 지도, 네이버 지식인 TOP7</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2017-2019</h3>
+                            <p>시크릿 요가 새벽/오전 클래스 지도, 모두를 위한 요가힐링 지도자 정모 70여회 운영</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <h3>2020-2021</h3>
+                            <p>요가라이프스타일 브랜드 원데이클래스 기획/총괄 에디터 (파운디 창립멤버)</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <h3>2023-현재</h3>
+                            <p>GS EPS, 한국딜로이트그룹 등 다수 기업 요가&플로깅 리더, 現 자마이카/하이브 스튜디오 도곡 오전반 지도</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="one-day-class">
+            <div class="container">
+                <h2 class="section-title">One-day Class Booking</h2>
+                <div class="booking-container card">
+                    <div class="calendar-view">
+                        <h3>December 2025</h3>
+                        <div class="calendar">
+                            <div class="calendar-header">Sun</div><div class="calendar-header">Mon</div><div class="calendar-header">Tue</div><div class="calendar-header">Wed</div><div class="calendar-header">Thu</div><div class="calendar-header">Fri</div><div class="calendar-header">Sat</div>
+                            <div class="calendar-day"></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day has-class">4</div><div class="calendar-day">5</div><div class="calendar-day has-class">6</div>
+                            <div class="calendar-day">7</div><div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day has-class">11</div><div class="calendar-day">12</div><div class="calendar-day has-class">13</div>
+                            <div class="calendar-day">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day has-class">18</div><div class="calendar-day">19</div><div class="calendar-day has-class">20</div>
+                            <div class="calendar-day">21</div><div class="calendar-day">22</div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div>
+                            <div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day">30</div><div class="calendar-day">31</div>
+                        </div>
+                    </div>
+                    <div class="booking-form">
+                        <h3>Reserve Your Spot</h3>
+                        <p><strong>Selected:</strong> Dec 6, 2025 - Men's Yoga Basic</p>
+                        <p>Select a theme/level:</p>
+                        <select style="width:100%; padding: 8px; margin-bottom: 15px;">
+                            <option>All Levels</option>
+                            <option>Restoration & Meditation</option>
+                            <option>Movement & Strength</option>
+                        </select>
+                        <p>Number of participants:</p>
+                        <input type="number" value="1" min="1" max="5" style="width:100%; padding: 8px; margin-bottom: 15px;">
+                        <p><strong>Total: ₩35,000</strong></p>
+                        <button class="cta-button">Proceed to Payment</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="review" class="section-with-bg">
+            <div class="container">
+                <h2 class="section-title">Reviews</h2>
+                <div class="review-grid">
+                    <div class="review-card">
+                        <div class="star-rating">★★★★★</div>
+                        <p>"선생님의 지도는 정말 섬세하고 안전해요. 남자 요가에 대한 편견이 있었는데, Teto Yoga를 통해 완전히 사라졌습니다."</p>
+                        <div class="reviewer">
+                            <img src="https://placehold.co/40x40/cccccc/FFFFFF?text=K" alt="Reviewer avatar">
+                            <span>- 김OO 회원</span>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="star-rating">★★★★★</div>
+                        <p>"매주 수업이 기다려집니다. 몸의 변화뿐만 아니라 마음의 안정까지 얻어가요. 특히 명상 세션이 정말 좋습니다."</p>
+                        <div class="reviewer">
+                            <img src="https://placehold.co/40x40/cccccc/FFFFFF?text=P" alt="Reviewer avatar">
+                            <span>- 박XX 회원</span>
+                        </div>
+                    </div>
+                    <div class="review-card">
+                        <div class="star-rating">★★★★★</div>
+                        <p>"기업 출강으로 처음 접했는데, 직원들 만족도가 역대 최고였습니다. 전문성이 느껴지는 클래스였습니다."</p>
+                        <div class="reviewer">
+                             <img src="https://placehold.co/40x40/cccccc/FFFFFF?text=D" alt="Reviewer avatar">
+                            <span>- 딜로이트 담당자</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="qna" class="section-with-bg">
+            <div class="container">
+                <h2 class="section-title">Q&A</h2>
+                <div class="card">
+                    <div class="qna-item">
+                        <div class="question"><span class="icon">🔒</span><span>요가를 한 번도 해본 적 없는데, 맨즈요가 클래스를 들어도 괜찮을까요?</span></div>
+                        <div class="answer">
+                            <p><strong>[답변]</strong> 네, 그럼요. Teto Yoga의 모든 클래스는 입문자를 고려하여 설계되었습니다. 특히 원데이 클래스는 요가가 처음이신 분들이 요가의 기본 원리와 재미를 느낄 수 있도록 구성되어 있으니 걱정 말고 참여하셔도 좋습니다.</p>
+                        </div>
+                    </div>
+                    <div class="qna-item">
+                        <div class="question"><span class="icon">🔓</span><span>수업에 필요한 준비물이 있나요?</span></div>
+                    </div>
+                    <div class="qna-item">
+                        <div class="question"><span class="icon">🔒</span><span>여성도 원데이 클래스에 참여할 수 있나요?</span></div>
+                         <div class="answer">
+                            <p><strong>[답변]</strong> 물론입니다. '맨즈요가'는 남성들에게 특화된 장점들을 부각하는 의미이지만, 모든 성별과 연령대가 함께 수련하는 것을 환영합니다. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="notice" class="section-with-bg">
+            <div class="container">
+                <h2 class="section-title">Notice</h2>
+                <div class="card">
+                    <ul class="notice-list">
+                        <li><span class="date">[2025-11-15]</span> 12월 원데이 클래스 오픈 안내</li>
+                        <li><span class="date">[2025-11-01]</span> Teto Yoga 공식 웹사이트가 오픈되었습니다.</li>
+                        <li><span class="date">[2025-10-28]</span> 11월 기업 출강 클래스 모집 마감 안내</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Teto Yoga. All Rights Reserved.</p>
+            <p>Professional Yoga Instructor, Kim Chanho</p>
+        </div>
+    </footer>
+
+</body>
+</html>
