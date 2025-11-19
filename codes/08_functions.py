@@ -36,7 +36,6 @@ pass
 to_celsius(120)
 temp1 = to_celsius(77)
 print(temp1)
-pass
 
 temp2 = 100
 result2 = to_celsius(temp2)

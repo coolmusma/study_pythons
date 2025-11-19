@@ -1,19 +1,28 @@
-✅ 문제 1 — return 누락 오류
-아래 함수는 섭씨 변환 후 값을 반환해야 한다.
- 현재 코드에서 발생하는 오류를 찾고 수정하시오.
-def to_celsius(temp):
-    celsius = (temp - 32) * 5 / 9
-    return celsius
+# ✅ 문제 1 — return 누락 오류
+# 아래 함수는 섭씨 변환 후 값을 반환해야 한다.
+#  현재 코드에서 발생하는 오류를 찾고 수정하시오.
+# def to_celsius(temp):
+#     celsius = (temp - 32) * 5 / 9
+#     return celsius
 
-result = to_celsius(77)
-print(result)
+# result = to_celsius(77)
+# print(result)
 
 
-# ✅ 문제 2 — 매개변수 이름 오류
-# 아래 프로그램은 실행 시 오류가 발생한다.
-#  오류 위치를 찾고 올바르게 수정하시오.
+✅ 문제 2 — 매개변수 이름 오류
+아래 프로그램은 실행 시 오류가 발생한다.
+ 오류 위치를 찾고 올바르게 수정하시오.
 # def convert(temp):
-#     return (temps - 3) * 5 / 9   # 오타: temps
+#     return (temp - 3) * 5 / 9
+
+# print(convert(95))
+
+
+
+(문제 풀기)
+# def convert(temp):
+#     celsius = (temp - 32) * 5 / 9
+#     return celsius
 
 # print(convert(95))
 
@@ -23,14 +32,23 @@ print(result)
 
 
 
-# ✅ 문제 3 — 함수 호출 인자 오류
-# 아래 코드는 함수 호출이 잘못되어 있다.
-#  오류를 설명하고 고치시오.
+✅ 문제 3 — 함수 호출 인자 오류
+아래 코드는 함수 호출이 잘못되어 있다.
+ 오류를 설명하고 고치시오.
 # def to_celsius(temp):
 #     return (temp - 32) * 5 / 9
 
 # value = to_celsius()
 # print(value)
+
+
+def to_celsius(temp):
+    celsius = (temp - 32) * 5 / 9
+    return celsius
+
+value = to_celsius(0)
+print(value)
+
 
 
 
@@ -47,7 +65,12 @@ print(result)
 # print(to_celsius("77"))
 
 
+def to_celsius(temp):
+    celsius = (temp - 32) * 5 / 9
+    return celsius
 
+value = to celsius(77)
+print(value)
 
 
 
